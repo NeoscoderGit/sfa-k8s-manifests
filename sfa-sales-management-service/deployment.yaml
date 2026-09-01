@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sfa-sales-management-service
+  namespace: sfa-sales-management-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sfa-sales-management-service
+  template:
+    metadata:
+      labels:
+        app: sfa-sales-management-service
+    spec:
+      containers:
+      - name: sfa-sales-management-service
+        image: 10.10.10.202/pico/sfa-sales-management-service:v1
+        ports:
+        - containerPort: 8003
+      imagePullSecrets:
+      - name: harbor-registry-secret

@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sfa-reports-service
+  namespace: sfa-reports-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sfa-reports-service
+  template:
+    metadata:
+      labels:
+        app: sfa-reports-service
+    spec:
+      containers:
+      - name: sfa-reports-service
+        image: 10.10.10.202/pico/sfa-reports-service:v1
+        ports:
+        - containerPort: 8000
+      imagePullSecrets:
+      - name: harbor-registry-secret

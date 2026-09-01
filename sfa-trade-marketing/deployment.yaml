@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sfa-trade-marketing
+  namespace: sfa-trade-marketing
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sfa-trade-marketing
+  template:
+    metadata:
+      labels:
+        app: sfa-trade-marketing
+    spec:
+      containers:
+      - name: sfa-trade-marketing
+        image: 10.10.10.202/pico/sfa-trade-marketing:v1
+        ports:
+        - containerPort: 8003
+      imagePullSecrets:
+      - name: harbor-registry-secret

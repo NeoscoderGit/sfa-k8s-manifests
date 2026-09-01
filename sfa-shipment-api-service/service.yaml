@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: sfa-shipment-api-service
+  namespace: sfa-shipment-api-service
+spec:
+  selector:
+    app: sfa-shipment-api-service
+  ports:
+  - port: 80
+    targetPort: 5040
+  type: ClusterIP

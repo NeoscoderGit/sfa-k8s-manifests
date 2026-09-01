@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: sfa-auth-service
+  namespace: sfa-auth-service
+spec:
+  selector:
+    app: sfa-auth-service
+  ports:
+  - port: 80
+    targetPort: 8001
+  type: ClusterIP

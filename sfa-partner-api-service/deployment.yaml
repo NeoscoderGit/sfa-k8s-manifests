@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sfa-partner-api-service
+  namespace: sfa-partner-api-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sfa-partner-api-service
+  template:
+    metadata:
+      labels:
+        app: sfa-partner-api-service
+    spec:
+      containers:
+      - name: sfa-partner-api-service
+        image: 10.10.10.202/pico/sfa-partner-api-service:v1
+        ports:
+        - containerPort: 8000
+      imagePullSecrets:
+      - name: harbor-registry-secret

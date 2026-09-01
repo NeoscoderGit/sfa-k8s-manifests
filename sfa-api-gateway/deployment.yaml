@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sfa-api-gateway
+  namespace: sfa-api-gateway
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sfa-api-gateway
+  template:
+    metadata:
+      labels:
+        app: sfa-api-gateway
+    spec:
+      containers:
+      - name: sfa-api-gateway
+        image: 10.10.10.202/pico/sfa-api-gateway:v1
+        ports:
+        - containerPort: 8000
+      imagePullSecrets:
+      - name: harbor-registry-secret

@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sfa-app-service
+  namespace: sfa-app-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sfa-app-service
+  template:
+    metadata:
+      labels:
+        app: sfa-app-service
+    spec:
+      containers:
+      - name: sfa-app-service
+        image: 10.10.10.202/pico/sfa-app-service:v1
+        ports:
+        - containerPort: 8001
+      imagePullSecrets:
+      - name: harbor-registry-secret

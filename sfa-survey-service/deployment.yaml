@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sfa-survey-service
+  namespace: sfa-survey-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sfa-survey-service
+  template:
+    metadata:
+      labels:
+        app: sfa-survey-service
+    spec:
+      containers:
+      - name: sfa-survey-service
+        image: 10.10.10.202/pico/sfa-survey-service:v1
+        ports:
+        - containerPort: 8003
+      imagePullSecrets:
+      - name: harbor-registry-secret
