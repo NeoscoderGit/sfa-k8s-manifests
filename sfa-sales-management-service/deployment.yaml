@@ -2,9 +2,9 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: sfa-sales-management-service
-  namespace: sfa-sales-management-service
+  namespace: default
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: sfa-sales-management-service
@@ -13,10 +13,24 @@ spec:
       labels:
         app: sfa-sales-management-service
     spec:
+      imagePullSecrets:
+      - name: harbor-secret
       containers:
       - name: sfa-sales-management-service
-        image: 10.10.10.202/pico/sfa-sales-management-service:v1
+        image: 10.10.10.202/pico/sfa-sales-management-service:latest
+        imagePullPolicy: Always
         ports:
-        - containerPort: 8003
-      imagePullSecrets:
-      - name: harbor-registry-secret
+        - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sfa-sales-management-service
+  namespace: default
+spec:
+  selector:
+    app: sfa-sales-management-service
+  ports:
+  - port: 80
+    targetPort: 8080
+  type: ClusterIP

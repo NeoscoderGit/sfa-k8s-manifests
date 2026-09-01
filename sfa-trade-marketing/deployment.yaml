@@ -2,9 +2,9 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: sfa-trade-marketing
-  namespace: sfa-trade-marketing
+  namespace: default
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: sfa-trade-marketing
@@ -13,10 +13,24 @@ spec:
       labels:
         app: sfa-trade-marketing
     spec:
+      imagePullSecrets:
+      - name: harbor-secret
       containers:
       - name: sfa-trade-marketing
-        image: 10.10.10.202/pico/sfa-trade-marketing:v1
+        image: 10.10.10.202/pico/sfa-trade-marketing:latest
+        imagePullPolicy: Always
         ports:
-        - containerPort: 8003
-      imagePullSecrets:
-      - name: harbor-registry-secret
+        - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sfa-trade-marketing
+  namespace: default
+spec:
+  selector:
+    app: sfa-trade-marketing
+  ports:
+  - port: 80
+    targetPort: 8080
+  type: ClusterIP

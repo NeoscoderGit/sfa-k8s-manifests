@@ -2,9 +2,9 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: sfa-api-gateway
-  namespace: sfa-api-gateway
+  namespace: default
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: sfa-api-gateway
@@ -13,10 +13,24 @@ spec:
       labels:
         app: sfa-api-gateway
     spec:
+      imagePullSecrets:
+      - name: harbor-secret
       containers:
       - name: sfa-api-gateway
-        image: 10.10.10.202/pico/sfa-api-gateway:v1
+        image: 10.10.10.202/pico/sfa-api-gateway:latest
+        imagePullPolicy: Always
         ports:
-        - containerPort: 8000
-      imagePullSecrets:
-      - name: harbor-registry-secret
+        - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sfa-api-gateway
+  namespace: default
+spec:
+  selector:
+    app: sfa-api-gateway
+  ports:
+  - port: 80
+    targetPort: 8080
+  type: ClusterIP
