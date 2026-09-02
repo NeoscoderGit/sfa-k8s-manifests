@@ -24,3 +24,25 @@ spec:
         envFrom:
         - secretRef:
             name: sfa-web-frontend-env
+        volumeMounts:
+        - name: next-config
+          mountPath: /app/next.config.js
+          subPath: next.config.js
+      volumes:
+      - name: next-config
+        configMap:
+          name: sfa-web-frontend-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sfa-web-frontend
+  namespace: sfa-web-frontend
+spec:
+  selector:
+    app: sfa-web-frontend
+  ports:
+  - port: 80
+    targetPort: 2091
+    nodePort: 30090
+  type: NodePort
