@@ -28,10 +28,15 @@ spec:
         - name: next-config
           mountPath: /app/next.config.js
           subPath: next.config.js
+        - name: i18n
+          mountPath: /app/i18n
       volumes:
       - name: next-config
         configMap:
           name: sfa-web-frontend-config
+      - name: i18n
+        configMap:
+          name: sfa-web-frontend-i18n
 ---
 apiVersion: v1
 kind: Service
