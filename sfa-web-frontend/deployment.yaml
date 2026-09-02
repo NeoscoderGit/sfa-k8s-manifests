@@ -17,26 +17,13 @@ spec:
       - name: harbor-registry-secret
       containers:
       - name: sfa-web-frontend
-        image: 10.10.10.202/pico/sfa-web-frontend:v7
+        image: 10.10.10.202/pico/sfa-web-frontend:v11
         imagePullPolicy: Always
         ports:
         - containerPort: 2091
         envFrom:
         - secretRef:
             name: sfa-web-frontend-env
-        volumeMounts:
-        - name: next-config
-          mountPath: /app/next.config.js
-          subPath: next.config.js
-        - name: i18n
-          mountPath: /app/i18n
-      volumes:
-      - name: next-config
-        configMap:
-          name: sfa-web-frontend-config
-      - name: i18n
-        configMap:
-          name: sfa-web-frontend-i18n
 ---
 apiVersion: v1
 kind: Service
