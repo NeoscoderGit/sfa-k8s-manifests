@@ -17,10 +17,13 @@ spec:
       - name: harbor-registry-secret
       containers:
       - name: sfa-reports-service
-        image: 10.10.10.202/pico/sfa-reports-service:v2
+        image: 10.10.10.202/pico/sfa-reports-service:v3
         imagePullPolicy: IfNotPresent
         ports:
-        - containerPort: 8080
+        - containerPort: 8000
+        envFrom:
+        - secretRef:
+            name: sfa-reports-service-env
 ---
 apiVersion: v1
 kind: Service
@@ -32,5 +35,5 @@ spec:
     app: sfa-reports-service
   ports:
   - port: 80
-    targetPort: 8080
+    targetPort: 8000
   type: ClusterIP
