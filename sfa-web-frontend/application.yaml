@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sfa-web-frontend
+  namespace: sfa-web-frontend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: sfa-web-frontend
+  template:
+    metadata:
+      labels:
+        app: sfa-web-frontend
+    spec:
+      imagePullSecrets:
+      - name: harbor-registry-secret
+      containers:
+      - name: sfa-web-frontend
+        image: 10.10.10.202/pico/sfa-web-frontend:v11
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 2091
+        envFrom:
+        - secretRef:
+            name: sfa-web-frontend-env
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sfa-web-frontend
+  namespace: sfa-web-frontend
+spec:
+  selector:
+    app: sfa-web-frontend
+  ports:
+  - port: 80
+    targetPort: 2091
+    nodePort: 30090
+  type: NodePort
