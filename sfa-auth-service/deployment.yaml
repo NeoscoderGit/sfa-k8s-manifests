@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: sfa-auth-service
-  namespace: default
+  namespace: sfa-auth-service
 spec:
   replicas: 2
   selector:
@@ -14,10 +14,10 @@ spec:
         app: sfa-auth-service
     spec:
       imagePullSecrets:
-      - name: harbor-secret
+      - name: harbor-registry-secret
       containers:
       - name: sfa-auth-service
-        image: 10.10.10.202/pico/sfa-auth-service:v1
+        image: 10.10.10.202/pico/sfa-auth-service:v2
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
@@ -26,7 +26,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: sfa-auth-service
-  namespace: default
+  namespace: sfa-auth-service
 spec:
   selector:
     app: sfa-auth-service
