@@ -17,7 +17,7 @@ spec:
       - name: harbor-secret
       containers:
       - name: sfa-api-gateway
-        image: 10.10.10.202/pico/sfa-api-gateway:latest
+        image: 10.10.10.202/pico/sfa-api-gateway:v1
         imagePullPolicy: Always
         ports:
         - containerPort: 8080

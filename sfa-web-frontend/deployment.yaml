@@ -17,7 +17,7 @@ spec:
       - name: harbor-secret
       containers:
       - name: sfa-web-frontend
-        image: 10.10.10.202/pico/sfa-web-frontend:latest
+        image: 10.10.10.202/pico/sfa-web-frontend:v1
         imagePullPolicy: Always
         ports:
         - containerPort: 8080

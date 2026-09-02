@@ -17,8 +17,8 @@ spec:
       - name: harbor-secret
       containers:
       - name: sfa-shipment-api-service
-        image: 10.10.10.202/pico/sfa-shipment-api-service:latest
-        imagePullPolicy: Always
+        image: 10.10.10.202/pico/sfa-shipment-api-service:v1
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8080
 ---

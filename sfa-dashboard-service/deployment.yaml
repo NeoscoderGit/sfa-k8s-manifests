@@ -17,7 +17,7 @@ spec:
       - name: harbor-secret
       containers:
       - name: sfa-dashboard-service
-        image: 10.10.10.202/pico/sfa-dashboard-service:latest
+        image: 10.10.10.202/pico/sfa-dashboard-service:v1
         imagePullPolicy: Always
         ports:
         - containerPort: 8080

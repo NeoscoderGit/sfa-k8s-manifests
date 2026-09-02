@@ -17,7 +17,7 @@ spec:
       - name: harbor-secret
       containers:
       - name: sfa-trade-marketing
-        image: 10.10.10.202/pico/sfa-trade-marketing:latest
+        image: 10.10.10.202/pico/sfa-trade-marketing:v1
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
