@@ -4,7 +4,7 @@ metadata:
   name: sfa-web-frontend
   namespace: sfa-web-frontend
 spec:
-  replicas: 2
+  replicas: 5
   selector:
     matchLabels:
       app: sfa-web-frontend
