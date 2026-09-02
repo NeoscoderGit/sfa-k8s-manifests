@@ -24,17 +24,3 @@ spec:
         envFrom:
         - secretRef:
             name: sfa-web-frontend-env
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: sfa-web-frontend
-  namespace: sfa-web-frontend
-spec:
-  selector:
-    app: sfa-web-frontend
-  ports:
-  - port: 80
-    targetPort: 2091
-    nodePort: 30090
-  type: NodePort
