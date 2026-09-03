@@ -4,7 +4,7 @@ metadata:
   name: sfa-master-data-service
   namespace: sfa-master-data-service
 spec:
-  replicas: 2
+  replicas: 5
   selector:
     matchLabels:
       app: sfa-master-data-service
