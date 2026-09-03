@@ -4,7 +4,7 @@ metadata:
   name: sfa-sales-management-service
   namespace: sfa-sales-management-service
 spec:
-  replicas: 2
+  replicas: 5
   selector:
     matchLabels:
       app: sfa-sales-management-service
