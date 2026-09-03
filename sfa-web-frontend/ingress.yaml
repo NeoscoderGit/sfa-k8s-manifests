@@ -4,7 +4,7 @@ metadata:
   name: sfa-web-frontend-ingress
   namespace: sfa-web-frontend
   annotations:
-    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
 spec:
   ingressClassName: nginx
   rules:
