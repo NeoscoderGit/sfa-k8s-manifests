@@ -4,7 +4,7 @@ metadata:
   name: sfa-trade-marketing
   namespace: sfa-trade-marketing
 spec:
-  replicas: 2
+  replicas: 5
   selector:
     matchLabels:
       app: sfa-trade-marketing
