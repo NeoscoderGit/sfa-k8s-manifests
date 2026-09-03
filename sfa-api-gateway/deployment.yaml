@@ -4,7 +4,7 @@ metadata:
   name: sfa-api-gateway
   namespace: sfa-api-gateway
 spec:
-  replicas: 2
+  replicas: 5
   selector:
     matchLabels:
       app: sfa-api-gateway
