@@ -4,7 +4,7 @@ metadata:
   name: sfa-shipment-api-service
   namespace: sfa-shipment-api-service
 spec:
-  replicas: 2
+  replicas: 5
   selector:
     matchLabels:
       app: sfa-shipment-api-service
