@@ -4,7 +4,7 @@ metadata:
   name: sfa-app-service
   namespace: sfa-app-service
 spec:
-  replicas: 2
+  replicas: 5
   selector:
     matchLabels:
       app: sfa-app-service
