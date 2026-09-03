@@ -22,5 +22,8 @@ spec:
         envFrom:
         - secretRef:
             name: sfa-reports-service-env
+        envFrom:
+        - secretRef:
+            name: sfa-reports-service-env
         ports:
         - containerPort: 8000
